@@ -1,8 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 
-NODE_VERSION="8.9.4"
-
 DOWNLOAD_FOLDER=${CACHE_DIR}/Downloads
 mkdir -p ${DOWNLOAD_FOLDER}
 DOWNLOAD_FILE=${DOWNLOAD_FOLDER}/node${NODE_VERSION}.tar.gz
