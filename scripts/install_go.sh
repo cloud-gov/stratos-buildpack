@@ -3,9 +3,9 @@ set -euo pipefail
 
 DOWNLOAD_FOLDER=${CACHE_DIR}/Downloads
 mkdir -p ${DOWNLOAD_FOLDER}
-DOWNLOAD_FILE=${DOWNLOAD_FOLDER}/go${GO_VERSION}.tgz
+DOWNLOAD_FILE=${DOWNLOAD_FOLDER}/go_${GO_VERSION}.tgz
 
-export GoInstallDir="/tmp/go$GO_VERSION"
+export GoInstallDir="/tmp/go_$GO_VERSION/go"
 mkdir -p $GoInstallDir
 
 # Download the archive if we do not have it cached
@@ -20,6 +20,9 @@ if [ ! -f ${DOWNLOAD_FILE} ]; then
   echo "       **DOWNLOAD_FILE** $DOWNLOAD_FILE"
   curl -s -L --retry 15 --retry-delay 2 $URL -o ${DOWNLOAD_FILE}
 
+  echo "Checking download folder for files"
+  ls -la $DOWNLOAD_FOLDER
+
   DOWNLOAD_SHA256=$(sha256sum ${DOWNLOAD_FILE} | cut -d ' ' -f 1)
 #   if [[ $DOWNLOAD_SHA256 != $GO_SHA256 ]]; then
 #     echo "       **URL** $URL"
@@ -30,14 +33,13 @@ else
   echo "-----> go install package available in cache"
 fi
 
-if [ ! -f $GoInstallDir/go/bin/go ]; then
-# TODO: 
+if [ ! -f $GoInstallDir/bin/go ]; then
   tar xzf ${DOWNLOAD_FILE} -C $GoInstallDir
 fi
 
-if [ ! -f $GoInstallDir/go/bin/go ]; then
+ls -la $GoInstallDir/bin
+
+if [ ! -f $GoInstallDir/bin/go ]; then
   echo "       **ERROR** Could not download go"
   exit 1
 fi
-
-
