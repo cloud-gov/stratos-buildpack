@@ -1,6 +1,5 @@
 #!/bin/bash
 set -euo pipefail
-echo " env: $env"
 
 DOWNLOAD_FOLDER=${CACHE_DIR}/Downloads
 mkdir -p ${DOWNLOAD_FOLDER}
