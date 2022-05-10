@@ -13,15 +13,15 @@ if [ ! -f ${DOWNLOAD_FILE} ]; then
   # Delete any cached go downloads, since those are now out of date
   rm -rf ${DOWNLOAD_FOLDER}/go*.tar.gz
 
-  URL=https://buildpacks.cloudfoundry.org/dependencies/go/go${GO_VERSION}.linux-amd64-${GO_MD5:0:8}.tar.gz
+  URL=https://buildpacks.cloudfoundry.org/dependencies/go/go${GO_VERSION}.linux-amd64-${GO_SHA256:0:8}.tar.gz
 
   echo "-----> Download go ${GO_VERSION}"
   curl -s -L --retry 15 --retry-delay 2 $URL -o ${DOWNLOAD_FILE}
 
-  DOWNLOAD_MD5=$(md5sum ${DOWNLOAD_FILE} | cut -d ' ' -f 1)
+  DOWNLOAD_SHA256=$(sha256sum ${DOWNLOAD_FILE} | cut -d ' ' -f 1)
 
-  if [[ $DOWNLOAD_MD5 != $GO_MD5 ]]; then
-    echo "       **ERROR** MD5 mismatch: got $DOWNLOAD_MD5 expected $GO_MD5"
+  if [[ $DOWNLOAD_SHA256 != $GO_SHA256 ]]; then
+    echo "       **ERROR** MD5 mismatch: got $DOWNLOAD_SHA256 expected $GO_SHA256"
     exit 1
   fi
 else
