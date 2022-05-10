@@ -65,6 +65,8 @@ if [ "$NEED_NODE" == "true" ]; then
   echo "---------> Node Version: `node --version`"
   echo "---------> NPM Version: `npm --version`"
 fi
+echo "-> PATH: `echo $PATH`"
+echo "---> Go Install Directory: `ls $GoInstallDir`"
 echo "---------> Go Version: `go version`"
 if [ -f "$BUILD_DIR/Gopkg.toml" ]; then
   export PATH=$DepInstallDir:$PATH
