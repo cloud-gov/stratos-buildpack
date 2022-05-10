@@ -21,7 +21,8 @@ if [ ! -f ${DOWNLOAD_FILE} ]; then
   DOWNLOAD_SHA256=$(sha256sum ${DOWNLOAD_FILE} | cut -d ' ' -f 1)
 
   if [[ $DOWNLOAD_SHA256 != $GO_SHA256 ]]; then
-    echo "       **ERROR** MD5 mismatch: got $DOWNLOAD_SHA256 expected $GO_SHA256"
+    echo "       **URL** $URL"
+    echo "       **ERROR** SHA256 mismatch: got $DOWNLOAD_SHA256 expected $GO_SHA256"
     exit 1
   fi
 else
