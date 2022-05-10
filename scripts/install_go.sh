@@ -13,7 +13,7 @@ if [ ! -f ${DOWNLOAD_FILE} ]; then
   # Delete any cached go downloads, since those are now out of date
   rm -rf ${DOWNLOAD_FOLDER}/go*.tgz
 
-  URL=https://buildpacks.cloudfoundry.org/dependencies/go/go$_{GO_VERSION}_linux_x64_cflinuxfs3_${GO_SHA256:0:8}.tgz
+  URL=https://buildpacks.cloudfoundry.org/dependencies/go/go_${GO_VERSION}_linux_x64_cflinuxfs3_${GO_SHA256:0:8}.tgz
 
   echo "-----> Download go ${GO_VERSION}"
   echo "       **URL** $URL"
