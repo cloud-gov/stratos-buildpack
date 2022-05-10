@@ -42,7 +42,7 @@ fi
 
 # Install go
 source "$BUILDPACK_DIR/scripts/install_go.sh"
-export PATH=$GoInstallDir/go/bin:$PATH
+export PATH=$GoInstallDir/bin:$PATH
 
 # Install dep if we have the Gopkg.toml file, otherwise install Glide
 if [ -f "$BUILD_DIR/Gopkg.toml" ]; then
