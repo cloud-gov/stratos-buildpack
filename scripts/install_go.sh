@@ -16,6 +16,8 @@ if [ ! -f ${DOWNLOAD_FILE} ]; then
   URL=https://buildpacks.cloudfoundry.org/dependencies/go/go$_{GO_VERSION}_linux_x64_cflinuxfs3_${GO_SHA256:0:8}.tgz
 
   echo "-----> Download go ${GO_VERSION}"
+  echo "       **URL** $URL"
+  echo "       **DOWNLOAD_FILE** $DOWNLOAD_FILE"
   curl -s -L --retry 15 --retry-delay 2 $URL -o ${DOWNLOAD_FILE}
 
   DOWNLOAD_SHA256=$(sha256sum ${DOWNLOAD_FILE} | cut -d ' ' -f 1)
