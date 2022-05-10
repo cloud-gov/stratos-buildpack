@@ -3,7 +3,7 @@ set -euo pipefail
 
 DOWNLOAD_FOLDER=${CACHE_DIR}/Downloads
 mkdir -p ${DOWNLOAD_FOLDER}
-DOWNLOAD_FILE=${DOWNLOAD_FOLDER}/go${GO_VERSION}.tar.gz
+DOWNLOAD_FILE=${DOWNLOAD_FOLDER}/go${GO_VERSION}.tgz
 
 export GoInstallDir="/tmp/go$GO_VERSION"
 mkdir -p $GoInstallDir
@@ -11,7 +11,7 @@ mkdir -p $GoInstallDir
 # Download the archive if we do not have it cached
 if [ ! -f ${DOWNLOAD_FILE} ]; then
   # Delete any cached go downloads, since those are now out of date
-  rm -rf ${DOWNLOAD_FOLDER}/go*.tar.gz
+  rm -rf ${DOWNLOAD_FOLDER}/go*.tgz
 
   URL=https://buildpacks.cloudfoundry.org/dependencies/go/go$_{GO_VERSION}_linux_x64_cflinuxfs3_${GO_SHA256:0:8}.tgz
 
