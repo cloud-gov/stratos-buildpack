@@ -23,7 +23,7 @@ if [ ! -f ${DOWNLOAD_FILE} ]; then
   echo "Checking download folder for files"
   ls -la $DOWNLOAD_FOLDER
 
-  DOWNLOAD_SHA256=$(sha256sum ${DOWNLOAD_FILE} | cut -d ' ' -f 1)
+# DOWNLOAD_SHA256=$(sha256sum ${DOWNLOAD_FILE} | cut -d ' ' -f 1)
 #   if [[ $DOWNLOAD_SHA256 != $GO_SHA256 ]]; then
 #     echo "       **URL** $URL"
 #     echo "       **ERROR** SHA256 mismatch: got $DOWNLOAD_SHA256 expected $GO_SHA256"
